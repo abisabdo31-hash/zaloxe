@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>لوحة التحكم - إضافة منتجات</title>
+  <style>
+    body { font-family: Roboto, Arial, sans-serif; background:#f4f6fb; margin:0; padding:20px; }
+    .wrap { max-width:900px; margin:20px auto; display:flex; gap:20px; align-items:flex-start; }
+    .panel { background:#fff; padding:18px; border-radius:10px; box-shadow:0 6px 20px rgba(20,30,60,0.08); }
+    .form { width:360px; }
+    label { display:block; font-weight:600; margin:10px 0 6px; }
+    input[type="text"], input[type="number"] { width:100%; padding:10px; border-radius:8px; border:1px solid #ddd; box-sizing:border-box; }
+    .file-input { padding:10px 12px; border-radius:8px; border:1px dashed #cfd8e3; background:#fbfdff; cursor:pointer; }
+    button { margin-top:10px; background:#0b63d6; color:white; border:none; padding:10px 14px; border-radius:8px; cursor:pointer; }
+    button.secondary { background:#e74c3c; }
+    .preview { width:180px; height:180px; border-radius:8px; object-fit:cover; border:1px solid #eee; display:block; }
+    .products-list { width:100%; max-width:460px; }
+    .prod { display:flex; gap:12px; align-items:center; border-bottom:1px solid #eef2f8; padding:12px 0; }
+    .prod img { width:64px; height:64px; border-radius:6px; object-fit:cover; border:1px solid #ddd; }
+    .prod .meta { flex:1; }
+    .small { color:#666; font-size:13px; }
+    .actions button { margin-left:6px; }
+    .note { font-size:13px; color:#666; margin-top:6px; }
+  </style>
+</head>
+<body>
+
+  <h2 style="text-align:center;">لوحة التحكم — إدارة المنتجات</h2>
+
+  <div class="wrap">
+    <!-- form -->
+    <div class="panel form">
+      <h3>إضافة / تعديل منتج</h3>
+
+      <label>اسم المنتج</label>
+      <input id="inpName" type="text" placeholder="مثال: تيشيرت أسود" />
+
+      <label>السعر (DA)</label>
+      <input id="inpPrice" type="number" placeholder="مثال: 1200" />
+
+      <label>الصورة ( أقصى حجم 2 ميجا)</label>
+      <input id="inpImage" class="file-input" type="file" accept="image" />
+
+      <img id="imgPreview" class="preview" src="" alt="معاينة الصورة" style="display:none; margin-top:10px;" />
+
+      <div style="display:flex; gap:8px;">
+        <button id="btnAdd">أضف المنتج</button>
+        <button id="btnClear" class="secondary" type="button">مسح الحقول</button>
+      </div>
+
+      <p class="note">المنتجات تحفظ محليًا في المتصفح باستخدام LocalStorage. مناسب للتطوير والاختبار المحلي.</p>
+    </div>
+
+    <!-- products list -->
+    <div class="panel products-list">
+      <h3>قائمة المنتجات</h3>
+      <div id="list"></div>
+      <p id="empty" class="small" style="display:none;">لا يوجد منتجات بعد — أضف منتج من الجهة اليسرى.</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
